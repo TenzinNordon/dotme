@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Auth App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navigation-bar">
+    <a href="todo.html">To-Do</a>
+    <a href="journal.html">Journal</a>
+  </div>
+    <button id="signInButton">Create Account / Sign In</button>
+    <button id="signOutButton">Sign Out</button>
+
+    <div id="message">
+        <p>You have signed in as <span id="userName"></span> with the email <span id="userEmail"></span> </p>
+    </div>
+
+    <script src="auth.js" defer></script>
+    <script type="module">
+  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+  
+  // Add your own Firebase config here
+  const firebaseConfig = {
+    apiKey: "AIzaSyBFxVcF2scY5SA6aoNDJbxq6vCU4rm8dhU",
+    authDomain: "auth-9748c.firebaseapp.com",
+    projectId: "auth-9748c",
+    storageBucket: "auth-9748c.appspot.com",
+    messagingSenderId: "375314076532",
+    measurementId: "G-8XGPFVTRF8",
+    appId: "1:375314076532:web:dcac74abfe138ba83ed221",
+    
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider()
+
+  const signInButton = document.getElementById("signInButton");
+  const signOutButton = document.getElementById("signOutButton");
+  const message = document.getElementById("message");
+
+  signOutButton.style.display = "none";
+  message.style.display = "none";
+
+  const userSignIn = async() => {
+    signInWithPopup(auth, provider)
+    .then((result) => {
+        const user = result.user
+        console.log(user);
+    }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+    })
+  }
+
+  const userSignOut = async() => {
+            signOut(auth).then(() => {
+                alert("You have signed out successfully");
+            }).catch((error) => {})
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                signOutButton.style.display = "block";
+                message.style.display = "block";
+            } else {
+                signOutButton.style.display = "none";
+                message.style.display = "none";
+            }
+        })
+
+        signInButton.addEventListener('click', userSignIn);
+        signOutButton.addEventListener('click', userSignOut);
+</script>
+</body>
+</html>

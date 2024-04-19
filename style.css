@@ -1,0 +1,88 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding: 0 1%;
+  justify-content: center;
+  min-height: 100vh;
+  background: #00005a;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 450px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.wrapper header {
+  display: flex;
+  align-items: center;
+  padding: 2% 3% 1%;
+  justify-content: space-between;
+}
+
+header .icons {
+  display: flex;
+}
+
+header .icons span {
+  height: 3.8rem;
+  width: 3.8rem;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 3.8rem;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+
+.icons span:last-child {
+  margin-right: -1rem;
+}
+
+header .icons span:hover {
+  background: #f2f2f2;
+}
+
+header .current-date {
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+.icons {
+    display: flex;
+  }
+  
+  .icons span {
+    height: 3.8rem;
+    width: 3.8rem;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 3.8rem;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+  }
+  
+  .icons span:last-child {
+    margin-right: -1rem;
+  }
+  
+  .icons span:hover {
+    background: #f2f2f2;
+  }
+  
